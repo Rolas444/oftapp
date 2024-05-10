@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NavMenu from "@/components/nav_menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +15,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const menu = [
+    { name: "Personas", path: "/personas" },
+    { name: "Medicamentos", path: "/medicamentos" },
+    { name: "Recetas", path: "/recetas" },
+  ]
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="es">
+      <body className={inter.className}>
+        <main className="flex">
+          <h2 className="w-full font-bold text-center">App de recetas</h2>
+        </main>
+        <NavMenu menuItems={menu} />
+        <div>
+        {children}
+        </div>
+      </body>
     </html>
   );
 }
